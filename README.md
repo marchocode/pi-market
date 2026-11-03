@@ -1,9 +1,11 @@
 # pi-market
 
+[English](README.md) | [简体中文](README_zh.md)
+
 [![npm version](https://img.shields.io/npm/v/pi-market.svg)](https://www.npmjs.com/package/pi-market)
 [![license](https://img.shields.io/npm/l/pi-market.svg)](LICENSE)
 
-在 Pi 里直接浏览 [pi.dev/packages](https://pi.dev/packages) 包市场，搜索、查看详情并一键安装扩展、技能、主题和提示词包。
+Browse the [pi.dev/packages](https://pi.dev/packages) market directly inside Pi: search packages, inspect details, and install extensions, skills, themes, and prompt packages with one click.
 
 ```
  Pi Market pi.dev/packages                                    5,748 packages · 2m ago
@@ -23,69 +25,69 @@
    ↑↓ move · ⏎ install · ctrl+r remove · ctrl+l scope · ctrl+t type · tab sort · esc close
 ```
 
-## 安装
+## Installation
 
-发布到 npm 后：
+Install from npm:
 
 ```bash
 pi install npm:pi-market
 ```
 
-本地开发/试用：
+Local development / trial:
 
 ```bash
 git clone git@github.com:marchocode/pi-market.git
 cd pi-market
-pi -e ./src/index.ts        # 仅本次启动加载
-# 或
-pi install ./               # 写入设置，之后每次启动自动加载
+pi -e ./src/index.ts        # Load only for this run
+# or
+pi install ./               # Write to settings and load on every start
 ```
 
-装好后运行 `/reload` 或重启 Pi。
+After installing, run `/reload` or restart Pi.
 
-## 使用
+## Usage
 
-### `/market` — 交互式市场
+### `/market` — Interactive market
 
-| 操作 | 说明 |
+| Action | Description |
 | --- | --- |
-| 直接输入 | 实时过滤，支持多关键词；先匹配名称，再匹配描述/作者/关键词 |
-| `↑` / `↓` | 移动选择（支持鼠标滚轮） |
-| `Enter` | 安装选中的包（按当前 scope） |
-| **鼠标点击** | 点击任意一行即安装该包（全屏模式下） |
-| `ctrl+r` | 移除已安装的包；连按两次确认 |
-| `ctrl+l` | 切换安装范围：`user`（全局）⇄ `project`（`.pi/settings.json`） |
-| `ctrl+t` | 切换类型过滤：all / extension / skill / theme / prompt |
-| `Tab` | 切换排序：下载量 / 最近更新 / 名称 |
-| `Esc` | 清空搜索；搜索为空时关闭市场 |
-| `Enter`（关闭后） | 若本次有安装/卸载，会询问是否立即 `/reload` |
+| Type directly | Live filtering with multiple keywords; matches names first, then description/author/keywords |
+| `↑` / `↓` | Move selection (mouse wheel works too) |
+| `Enter` | Install the selected package (using the current scope) |
+| **Mouse click** | Click any row to install that package (fullscreen mode) |
+| `ctrl+r` | Remove an installed package; press twice to confirm |
+| `ctrl+l` | Toggle install scope: `user` (global) ⇄ `project` (`.pi/settings.json`) |
+| `ctrl+t` | Toggle type filter: all / extension / skill / theme / prompt |
+| `Tab` | Toggle sort: downloads / recently updated / name |
+| `Esc` | Clear search; closes the market when the search is empty |
+| `Enter` (after closing) | If anything was installed or removed, asks whether to `/reload` now |
 
-### 其他命令
+### Other commands
 
 ```bash
-/market                      # 打开交互式市场
-/market <关键词>              # 打开市场并带上搜索词
-/market search <关键词>       # 直接打印匹配结果（非 TUI 也可用）
-/market refresh              # 强制重新下载市场目录
-/market install <包名> [-l]   # 直接安装；-l 表示安装到项目 (.pi/settings.json)
-/market help                 # 帮助
+/market                      # Open the interactive market
+/market <keyword>            # Open the market with a search query
+/market search <keyword>     # Print matching results directly (works outside the TUI)
+/market refresh              # Force-refresh the market catalog
+/market install <name> [-l]  # Install directly; -l installs into the project (.pi/settings.json)
+/market help                 # Show help
 ```
 
-### 给模型的工具
+### Tools for the model
 
-- `market_search` — 搜索市场目录，返回包名、描述、安装命令、是否已安装
-- `market_install` — 执行 `pi install`（交互模式下会先弹窗确认）
+- `market_search` — Search the market catalog and return the package name, description, install command, and installed status
+- `market_install` — Run `pi install` (asks for confirmation in interactive mode)
 
-## 数据与缓存
+## Data and cache
 
-- 目录来自 `https://pi.dev/packages` 的服务端渲染 HTML，共 ~115 页，首次打开会并发抓取并显示进度。
-- 解析结果缓存到 `~/.pi/agent/cache/pi-market/catalog.json`（默认 6 小时有效；部分失败时 10 分钟）。
-- `/market refresh` 可随时强制刷新；网络失败会在 TUI 中显示错误并支持 `Enter` 重试。
-- 已安装状态读取 `~/.pi/agent/settings.json` 和当前目录 `.pi/settings.json`。
+- The catalog comes from the server-rendered HTML at `https://pi.dev/packages` (~115 pages). The first open fetches pages concurrently and shows progress.
+- Parsed results are cached at `~/.pi/agent/cache/pi-market/catalog.json` (6-hour TTL by default; 10 minutes when the catalog is partially fetched).
+- `/market refresh` forces a refresh at any time; network errors are shown in the TUI with `Enter` to retry.
+- Installed status is read from `~/.pi/agent/settings.json` and `.pi/settings.json` in the current directory.
 
-## 安装实际执行什么
+## What installation actually runs
 
-`pi-market` 不直接改配置，而是调用 Pi CLI：
+`pi-market` does not edit settings directly; it invokes the Pi CLI:
 
 ```bash
 pi install npm:<name>            # user scope
@@ -93,35 +95,35 @@ pi install npm:<name> --local    # project scope
 pi remove  npm:<name> [--local]
 ```
 
-因此版本锁定、npm/git 源处理和设置格式都与手动安装完全一致。
+This keeps version pinning, npm/git source handling, and the settings format identical to manual installs.
 
-安全提示：Pi 扩展以你的系统权限运行，请只安装你信任的包。项目级安装受 Pi 的项目信任机制保护；当项目未受信任时，市场会提示你改用手动 `--approve` 或切换到 user scope。
+Security note: Pi extensions run with your system permissions, so only install packages you trust. Project-local installs are protected by Pi's project trust mechanism; when the project is untrusted, the market suggests using manual `--approve` or switching to user scope.
 
-## 开发
+## Development
 
 ```bash
-npm install            # 安装 typescript（仅用于类型检查）
+npm install            # Install TypeScript (type-checking only)
 npm run typecheck      # tsc --noEmit
-npm test               # 解析/搜索/源归一化单元测试
-npm run preview        # 不开 TUI，直接打印市场目录（支持 --cached / --query）
+npm test               # Parser/search/source-normalization unit tests
+npm run preview        # Print the catalog without the TUI (supports --cached / --query)
 ```
 
-扩展入口为 `src/index.ts`，使用 jiti 直接加载 TypeScript，无需构建。
+The extension entry point is `src/index.ts`. jiti loads TypeScript directly, so no build step is needed.
 
-## 发布（维护者）
+## Publishing (maintainers)
 
 ```bash
 npm login
 npm run typecheck && npm test
-npm version patch        # 更新版本号并创建 git tag
-git push --follow-tags   # 推送 tag 后 GitHub Actions 自动发布
+npm version patch        # Bump the version and create a git tag
+git push --follow-tags   # Pushing the tag triggers GitHub Actions
 ```
 
-GitHub Actions（`.github/workflows/publish.yml`）在推送 `v*` tag 时执行
-`npm publish --provenance --access public`，需要在仓库 Secrets 中配置 `NPM_TOKEN`
-（npm 账号的 Automation token）。
+GitHub Actions (`.github/workflows/publish.yml`) runs
+`npm publish --provenance --access public` when a `v*` tag is pushed. Configure
+`NPM_TOKEN` in the repository secrets (an npm Automation token).
 
-手动发布：
+Manual publish:
 
 ```bash
 npm publish --access public
