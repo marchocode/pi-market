@@ -1,0 +1,52 @@
+{
+	"name": "pi-market",
+	"version": "0.1.0",
+	"description": "Browse and install packages from the pi.dev package gallery without leaving Pi",
+	"author": "marchocode",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/marchocode/pi-market.git"
+	},
+	"homepage": "https://github.com/marchocode/pi-market#readme",
+	"bugs": {
+		"url": "https://github.com/marchocode/pi-market/issues"
+	},
+	"type": "module",
+	"license": "MIT",
+	"keywords": [
+		"pi-package",
+		"pi",
+		"pi-extension",
+		"market",
+		"gallery",
+		"packages"
+	],
+	"files": [
+		"src",
+		"README.md",
+		"CHANGELOG.md",
+		"LICENSE"
+	],
+	"pi": {
+		"extensions": [
+			"./src/index.ts"
+		]
+	},
+	"scripts": {
+		"preview": "node --experimental-strip-types scripts/preview.ts",
+		"test": "node --experimental-strip-types --test tests/*.test.ts",
+		"typecheck": "tsc --noEmit"
+	},
+	"peerDependencies": {
+		"@earendil-works/pi-ai": "*",
+		"@earendil-works/pi-coding-agent": "*",
+		"@earendil-works/pi-tui": "*",
+		"typebox": "*"
+	},
+	"devDependencies": {
+		"typescript": "^5.6.0"
+	},
+	"engines": {
+		"node": ">=20"
+	}
+}
