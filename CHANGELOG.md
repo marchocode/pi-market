@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2 - 2026-11-03
+
+- English README is now the default; Chinese docs moved to `README_zh.md`.
+- Publish through npm Trusted Publishing (OIDC) in GitHub Actions.
+
 ## 0.1.0 - 2026-11-03
 
 Initial release.
