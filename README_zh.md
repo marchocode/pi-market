@@ -110,25 +110,6 @@ npm run preview        # 不开 TUI，直接打印市场目录（支持 --cached
 
 扩展入口为 `src/index.ts`，使用 jiti 直接加载 TypeScript，无需构建。
 
-## 发布（维护者）
-
-```bash
-npm login
-npm run typecheck && npm test
-npm version patch        # 更新版本号并创建 git tag
-git push --follow-tags   # 推送 tag 后 GitHub Actions 自动发布
-```
-
-GitHub Actions（`.github/workflows/publish.yml`）在推送 `v*` tag 时执行
-`npm publish --provenance --access public`，需要在仓库 Secrets 中配置 `NPM_TOKEN`
-（npm 账号的 Automation token）。
-
-手动发布：
-
-```bash
-npm publish --access public
-```
-
 ## License
 
 MIT

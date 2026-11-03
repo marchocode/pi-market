@@ -110,25 +110,6 @@ npm run preview        # Print the catalog without the TUI (supports --cached / 
 
 The extension entry point is `src/index.ts`. jiti loads TypeScript directly, so no build step is needed.
 
-## Publishing (maintainers)
-
-```bash
-npm login
-npm run typecheck && npm test
-npm version patch        # Bump the version and create a git tag
-git push --follow-tags   # Pushing the tag triggers GitHub Actions
-```
-
-GitHub Actions (`.github/workflows/publish.yml`) runs
-`npm publish --provenance --access public` when a `v*` tag is pushed. Configure
-`NPM_TOKEN` in the repository secrets (an npm Automation token).
-
-Manual publish:
-
-```bash
-npm publish --access public
-```
-
 ## License
 
 MIT
