@@ -8,22 +8,31 @@
 Browse the [pi.dev/packages](https://pi.dev/packages) market directly inside Pi: search packages, inspect details, and install extensions, skills, themes, and prompt packages with one click.
 
 ```
- Pi Market pi.dev/packages                                    5,748 packages · 2m ago
- / powerline
- type all · sort downloads · scope user · show 14/5,748
- ──────────────────────────────────────────────────────────────────────────────────────
- ▸ pi-powerline-footer                              50.5K/mo│pi-powerline-footer
-   pi-powerline                                         877/mo│nicopreme · 50.5K/mo · 4d ago
-   @talex-touch/pi-powerline-footer                     255/mo│extension · not installed
-   @lokiyou/pi-nano-footer                            2,748/mo│
-   pi-tui-status-beautifier                           1,826/mo│Powerline-style status bar extension for pi coding
-   @underactive/pi-topping-statusline                 1,482/mo│agent
-   @juanibiapina/pi-powerbar                          1,198/mo│
-   @groeponline/pi-wishcraft                           853/mo│$ pi install npm:pi-powerline-footer
-   @wishx127/pi-tokyo-night                             764/mo│https://pi.dev/packages/pi-powerline-footer
-   ────────────────────────────────────────────────────────────────────────────────────
-   ↑↓ move · ⏎ install · ctrl+r remove · ctrl+l scope · ctrl+t type · tab sort · esc close
+Pi Market pi.dev/packages                                                   5,649 packages · 2m ago
+/   type to filter · package name, description, author
+type all · sort downloads · scope user · show 5,649/5,649
+────────────────────────────────────────────────────────────────────────────────────────────────────
+▸ billion-context                                2.8M/mo│billion-context
+  pi-mcp-adapter                                 1.4M/mo│ranxianglei · 2.8M/mo · 2d ago
+  pi-web-access                           1.1M/mo ✓user │package · not installed
+  pi-mcp-extension                             823.8K/mo│
+  pi-subagents                          726.4K/mo ✓user │A context-compression plugin — small
+  @postman/postman-plugin                        426K/mo│context windows (a 100K context is enough),
+  openwiki                                     209.9K/mo│5x fewer tokens, month-long single sessions
+  @juicesharp/rpiv-ask-user-question           149.3K/mo│(billions of tokens), and compression
+  @dietrichgebert/ponytail                     130.6K/mo│quality — for all agents: pi, OpenCode,
+  cc-safety-net                                108.5K/mo│Codex, Claude Code, and more.
+  context-mode                                 103.9K/mo│billion-context is all
+  @langchain/langsmith-pi-extension             96.1K/mo│
+  @plannotator/pi-extension                     89.7K/mo│$ pi install npm:billion-context
+  @juicesharp/rpiv-todo                         87.4K/mo│https://pi.dev/packages/billion-context
+  @onkernel/browser-loop                        86.4K/mo│
+  1-15 of 5,649
+────────────────────────────────────────────────────────────────────────────────────────────────────
+↑↓ move · ⏎ install · ctrl+r remove · ctrl+l scope · ctrl+t type · tab sort · esc close
 ```
+
+Wide terminals show the package list on the left and the selected package's details on the right; narrow terminals stack that summary under the list. Each row shows the package name, its monthly download count, and a `✓user` / `✓project` badge when it is already installed; the footer reports the visible range, e.g. `1-15 of 5,649`.
 
 ## Installation
 
@@ -80,7 +89,7 @@ After installing, run `/reload` or restart Pi.
 
 ## Data and cache
 
-- The catalog comes from the server-rendered HTML at `https://pi.dev/packages` (~115 pages). The first open fetches pages concurrently and shows progress.
+- The catalog comes from the server-rendered HTML at `https://pi.dev/packages` (~113 pages). The first open fetches pages concurrently and shows progress.
 - Parsed results are cached at `~/.pi/agent/cache/pi-market/catalog.json` (6-hour TTL by default; 10 minutes when the catalog is partially fetched).
 - `/market refresh` forces a refresh at any time; network errors are shown in the TUI with `Enter` to retry.
 - Installed status is read from `~/.pi/agent/settings.json` and `.pi/settings.json` in the current directory.

@@ -1,6 +1,6 @@
 {
 	"name": "pi-market",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"description": "Browse and install packages from the pi.dev package gallery without leaving Pi",
 	"author": "marchocode",
 	"repository": {

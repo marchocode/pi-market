@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3 - 2026-11-05
+
+- README previews now match the real TUI: actual package counts and download
+  figures, the wide two-pane list/detail layout, and installed badges.
+- Document the list columns, install badges, and visible-range footer.
+
 ## 0.1.2 - 2026-11-03
 
 - English README is now the default; Chinese docs moved to `README_zh.md`.

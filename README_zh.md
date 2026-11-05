@@ -8,22 +8,31 @@
 在 Pi 里直接浏览 [pi.dev/packages](https://pi.dev/packages) 包市场，搜索、查看详情并一键安装扩展、技能、主题和提示词包。
 
 ```
- Pi Market pi.dev/packages                                    5,748 packages · 2m ago
- / powerline
- type all · sort downloads · scope user · show 14/5,748
- ──────────────────────────────────────────────────────────────────────────────────────
- ▸ pi-powerline-footer                              50.5K/mo│pi-powerline-footer
-   pi-powerline                                         877/mo│nicopreme · 50.5K/mo · 4d ago
-   @talex-touch/pi-powerline-footer                     255/mo│extension · not installed
-   @lokiyou/pi-nano-footer                            2,748/mo│
-   pi-tui-status-beautifier                           1,826/mo│Powerline-style status bar extension for pi coding
-   @underactive/pi-topping-statusline                 1,482/mo│agent
-   @juanibiapina/pi-powerbar                          1,198/mo│
-   @groeponline/pi-wishcraft                           853/mo│$ pi install npm:pi-powerline-footer
-   @wishx127/pi-tokyo-night                             764/mo│https://pi.dev/packages/pi-powerline-footer
-   ────────────────────────────────────────────────────────────────────────────────────
-   ↑↓ move · ⏎ install · ctrl+r remove · ctrl+l scope · ctrl+t type · tab sort · esc close
+Pi Market pi.dev/packages                                                   5,649 packages · 2m ago
+/   type to filter · package name, description, author
+type all · sort downloads · scope user · show 5,649/5,649
+────────────────────────────────────────────────────────────────────────────────────────────────────
+▸ billion-context                                2.8M/mo│billion-context
+  pi-mcp-adapter                                 1.4M/mo│ranxianglei · 2.8M/mo · 2d ago
+  pi-web-access                           1.1M/mo ✓user │package · not installed
+  pi-mcp-extension                             823.8K/mo│
+  pi-subagents                          726.4K/mo ✓user │A context-compression plugin — small
+  @postman/postman-plugin                        426K/mo│context windows (a 100K context is enough),
+  openwiki                                     209.9K/mo│5x fewer tokens, month-long single sessions
+  @juicesharp/rpiv-ask-user-question           149.3K/mo│(billions of tokens), and compression
+  @dietrichgebert/ponytail                     130.6K/mo│quality — for all agents: pi, OpenCode,
+  cc-safety-net                                108.5K/mo│Codex, Claude Code, and more.
+  context-mode                                 103.9K/mo│billion-context is all
+  @langchain/langsmith-pi-extension             96.1K/mo│
+  @plannotator/pi-extension                     89.7K/mo│$ pi install npm:billion-context
+  @juicesharp/rpiv-todo                         87.4K/mo│https://pi.dev/packages/billion-context
+  @onkernel/browser-loop                        86.4K/mo│
+  1-15 of 5,649
+────────────────────────────────────────────────────────────────────────────────────────────────────
+↑↓ move · ⏎ install · ctrl+r remove · ctrl+l scope · ctrl+t type · tab sort · esc close
 ```
+
+宽终端下左侧为包列表、右侧为选中包的详情；窄终端会把摘要堆叠在列表下方。每行显示包名、月下载量，已安装的包带 `✓user` / `✓project` 标记；底部显示当前可见范围，例如 `1-15 of 5,649`。
 
 ## 安装
 
@@ -80,7 +89,7 @@ pi install ./               # 写入设置，之后每次启动自动加载
 
 ## 数据与缓存
 
-- 目录来自 `https://pi.dev/packages` 的服务端渲染 HTML，共 ~115 页，首次打开会并发抓取并显示进度。
+- 目录来自 `https://pi.dev/packages` 的服务端渲染 HTML，共 ~113 页，首次打开会并发抓取并显示进度。
 - 解析结果缓存到 `~/.pi/agent/cache/pi-market/catalog.json`（默认 6 小时有效；部分失败时 10 分钟）。
 - `/market refresh` 可随时强制刷新；网络失败会在 TUI 中显示错误并支持 `Enter` 重试。
 - 已安装状态读取 `~/.pi/agent/settings.json` 和当前目录 `.pi/settings.json`。
